@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="project" />
+		<Option pch_mode="2" />
+		<Option compiler="avrgcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\project.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="avrgcc" />
+				<Compiler>
+					<Add option="-O" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\project.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="avrgcc" />
+				<Compiler>
+					<Add option="-Os" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-mmcu=atmega32" />
+			<Add option="-DF_CPU=8000000UL" />
+		</Compiler>
+		<Linker>
+			<Add option="-mmcu=atmega32" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_FILE).map,--cref" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="avr-size --mcu=atmega32 --format=avr $(TARGET_OUTPUT_FILE)" />
+			<Add after="avr-objcopy -O ihex -R .eeprom -R .eesafe $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex" />
+			<Add after="avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).eep.hex" />
+			<Add after='cmd /c &quot;avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_FILE).lss&quot;' />
+		</ExtraCommands>
+		<Unit filename="FAT.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="FAT.h" />
+		<Unit filename="ILI9331.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ILI9331.h" />
+		<Unit filename="SCCB.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SCCB.h" />
+		<Unit filename="VARIABLE.h" />
+		<Unit filename="config.h" />
+		<Unit filename="english_16x8.h" />
+		<Unit filename="font.h" />
+		<Unit filename="int.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="int.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mmc_sd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mmc_sd.h" />
+		<Unit filename="ov7670.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ov7670.h" />
+		<Unit filename="ov7670config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tu.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

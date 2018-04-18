@@ -1,0 +1,12 @@
+配置ffconf.h
+
+#define	_FS_TINY	1		/* 0 or 1 */
+#define _FS_READONLY	1	        /* 0 or 1 */
+
+配置读写接口: diskio.h
+#define _READONLY	1	        /* 1: Read-only mode */
+
+实现驱动接口: diskio.c
+disk_initialize 函数:驱动器初始化,成功返回 RES_OK.
+disk_read       函数:读扇区,根据参数指向对应的读扇区函数.
+
